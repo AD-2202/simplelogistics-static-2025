@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SimpleLogistics (Static)</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>SimpleLogistics</h1>
+    <form id="load-form">
+      <input type="text" id="description" placeholder="Description" required />
+      <input type="text" id="destination" placeholder="Destination" required />
+      <input type="number" id="weight" placeholder="Weight (kg)" required />
+      <button type="submit">Add Load</button>
+    </form>
+
+    <input type="text" id="search" placeholder="Search by destination..." />
+
+    <ul id="load-list"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
