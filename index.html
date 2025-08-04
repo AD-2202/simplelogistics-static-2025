@@ -14,6 +14,17 @@
       <input type="text" id="destination" placeholder="Destination" required />
       <input type="number" id="weight" placeholder="Weight (kg)" required />
       <button type="submit">Add Load</button>
+      <label for="cost">Cost:</label>
+<div style="display: flex; gap: 10px;">
+  <input type="number" id="cost" name="cost" placeholder="Enter amount" required>
+  <select id="currency" name="currency" required>
+    <option value="USD">USD ($)</option>
+    <option value="EUR">EUR (€)</option>
+    <option value="AED">AED (دِرهم)</option>
+    <option value="IRR">IRR (﷼)</option>
+    <option value="CNY">CNY (¥)</option>
+  </select>
+</div>
     </form>
 
     <input type="text" id="search" placeholder="Search by destination..." />
