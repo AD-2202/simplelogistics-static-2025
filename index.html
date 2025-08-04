@@ -2,36 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SimpleLogistics (Static)</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Shipment</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>SimpleLogistics</h1>
-    <form id="load-form">
-      <input type="text" id="description" placeholder="Description" required />
-      <input type="text" id="destination" placeholder="Destination" required />
-      <input type="number" id="weight" placeholder="Weight (kg)" required />
-      <button type="submit">Add Load</button>
+  <header>
+    <h1>Add Shipment</h1>
+    <button onclick="downloadPDF()">Download PDF</button>
+  </header>
+  <main id="content">
+    <form id="shipmentForm">
+      <label for="shipmentId">Shipment ID:</label>
+      <input type="text" id="shipmentId" name="shipmentId" required />
+
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" name="destination" required />
+
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option value="pending">Pending</option>
+        <option value="in_transit">In Transit</option>
+        <option value="delivered">Delivered</option>
+      </select>
+
+      <label for="carrier">Carrier:</label>
+      <input type="text" id="carrier" name="carrier" />
+
       <label for="cost">Cost:</label>
-<div style="display: flex; gap: 10px;">
-  <input type="number" id="cost" name="cost" placeholder="Enter amount" required>
-  <select id="currency" name="currency" required>
-    <option value="USD">USD ($)</option>
-    <option value="EUR">EUR (€)</option>
-    <option value="AED">AED (دِرهم)</option>
-    <option value="IRR">IRR (﷼)</option>
-    <option value="CNY">CNY (¥)</option>
-  </select>
-</div>
+      <input type="number" id="cost" name="cost" required />
+
+      <label for="currency">Currency:</label>
+      <select id="currency" name="currency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="CNY">CNY</option>
+        <option value="IRR">IRR</option>
+        <option value="TRY">TRY</option>
+        <option value="AED">AED</option>
+      </select>
+
+      <label for="paid">Paid:</label>
+      <select id="paid" name="paid">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+
+      <button type="submit">Save Shipment</button>
     </form>
-
-    <input type="text" id="search" placeholder="Search by destination..." />
-
-    <ul id="load-list"></ul>
-  </div>
-
-  <script src="app.js"></script>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    function downloadPDF() {
+      const element = document.getElementById('content');
+      html2pdf().from(element).save('shipment.pdf');
+    }
+  </script>
 </body>
 </html>
